@@ -11,4 +11,5 @@
     <string name="fast_forward_clicked">Fast Forward clicked</string>
     <string name="now_playing">Now Playing</string>
     <string name="title_activity_extra">ExtraActivity</string>
+    <string name="title_activity_now_playing_main">NowPlayingMain</string>
 </resources>

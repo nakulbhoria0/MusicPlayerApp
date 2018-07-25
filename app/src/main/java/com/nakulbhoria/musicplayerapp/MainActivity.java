@@ -60,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 String artistName = song.getArtist();
 
                 Intent i = new Intent(MainActivity.this, NowPlaying.class);
-                i.putExtra("song",songList );
+                i.putParcelableArrayListExtra("list", songList);
                 i.putExtra("song", songName);
                 i.putExtra("artist", artistName);
+                i.putExtra("position", position);
                 startActivity(i);
             }
         });

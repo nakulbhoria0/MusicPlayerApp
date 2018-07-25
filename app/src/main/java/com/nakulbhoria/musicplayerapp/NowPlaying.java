@@ -3,7 +3,11 @@ package com.nakulbhoria.musicplayerapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,12 +22,14 @@ public class NowPlaying extends AppCompatActivity{
     TextView songNameNow, artistNameNow;
     private static final String TAG = "Now Playing Activity";
     ArrayList<Song> songArrayList;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_now_playing);
-
+        setContentView(R.layout.activity_now_playing_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         songNameNow = findViewById(R.id.song_name);
@@ -37,13 +43,18 @@ public class NowPlaying extends AppCompatActivity{
         shuffle = findViewById(R.id.shuffle);
 
         Intent intent = getIntent();
-        songArrayList = intent.getParcelableArrayListExtra("song");
+        songArrayList = intent.getParcelableArrayListExtra("list");
         String songName = intent.getStringExtra("song");
         String artistName = intent.getStringExtra("artist");
+        position = intent.getIntExtra("position", 0);
 
-        for (int x =0; x <songArrayList.size();x++){
-            Song song = songArrayList.get(x);
-            Log.d(TAG, "onCreate: Song Name: " + song.getName() );
+        if (songArrayList == null) {
+            return;
+        } else {
+            for (int x = 0; x < songArrayList.size(); x++) {
+                Song song = songArrayList.get(x);
+                Log.v(TAG, "onCreate: Song Name: " + song.getName() + " & Position: " + position);
+            }
         }
 
         songNameNow.setText(songName);
@@ -93,5 +104,32 @@ public class NowPlaying extends AppCompatActivity{
         });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Toast.makeText(this, "Setting clicked", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.playlist:
+                Toast.makeText(this, "Playlist clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, extraActivity.class);
+                i.putParcelableArrayListExtra("list", songArrayList);
+                i.putExtra("position", position);
+                startActivity(i);
+                break;
+            default:
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

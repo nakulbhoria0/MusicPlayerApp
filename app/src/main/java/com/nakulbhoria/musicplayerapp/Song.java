@@ -15,11 +15,7 @@ class Song implements Parcelable{
         this.artist = SongArtist;
     }
 
-    protected Song(Parcel in) {
-        id = in.readLong();
-        name = in.readString();
-        artist = in.readString();
-    }
+
 
     public static final Creator<Song> CREATOR = new Creator<Song>() {
         @Override
@@ -55,5 +51,11 @@ class Song implements Parcelable{
         dest.writeLong(id);
         dest.writeString(name);
         dest.writeString(artist);
+    }
+
+    protected Song(Parcel in) {
+        id = in.readLong();
+        name = in.readString();
+        artist = in.readString();
     }
 }

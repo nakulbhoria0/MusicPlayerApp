@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/New_Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_repeat_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/New_Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_queue_music_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,9 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="248acb" />
                             <entry key="height" value="48" />
-                            <entry key="outputName" value="repeat" />
+                            <entry key="outputName" value="playlist" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\nakul bhoria" />
                             <entry key="width" value="48" />
