@@ -4,8 +4,8 @@
     tools:context="com.nakulbhoria.musicplayerapp.MainActivity">
 
     <item
-        android:id="@+id/playlist"
-        android:icon="@drawable/playlist"
+        android:id="@+id/queue_music"
+        android:icon="@drawable/queue_music"
         android:orderInCategory="100"
         android:title="playlist"
         app:showAsAction="always" />

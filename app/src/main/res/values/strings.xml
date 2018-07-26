@@ -2,7 +2,8 @@
     <string name="app_name">Music Player App</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_now_playing">NowPlaying</string>
-    <string name="shuffle_clicked">Shuffle is clicked</string>
+    <string name="shuffle_on_clicked">Shuffle is on</string>
+    <string name="shuffle_off_clicked">Shuffle is off</string>
     <string name="previous_clicked">Previous is clicked</string>
     <string name="skip_next_clicked">Skip Next is clicked</string>
     <string name="repeat_clicked">Repeat is clicked</string>

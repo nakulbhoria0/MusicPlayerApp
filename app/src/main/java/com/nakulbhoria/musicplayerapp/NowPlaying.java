@@ -2,6 +2,7 @@ package com.nakulbhoria.musicplayerapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -23,6 +24,7 @@ public class NowPlaying extends AppCompatActivity{
     private static final String TAG = "Now Playing Activity";
     ArrayList<Song> songArrayList;
     int position;
+    public boolean isShuffle = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,13 @@ public class NowPlaying extends AppCompatActivity{
         setContentView(R.layout.activity_now_playing_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.arrow_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         songNameNow = findViewById(R.id.song_name);
@@ -99,9 +108,17 @@ public class NowPlaying extends AppCompatActivity{
         shuffle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(NowPlaying.this, R.string.shuffle_clicked, Toast.LENGTH_SHORT).show();
+                if (!isShuffle) {
+                    isShuffle = true;
+                    Toast.makeText(NowPlaying.this, R.string.shuffle_on_clicked, Toast.LENGTH_SHORT).show();
+                } else {
+                    isShuffle = false;
+                    Toast.makeText(NowPlaying.this, R.string.shuffle_off_clicked, Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+
 
 
     }
@@ -119,10 +136,14 @@ public class NowPlaying extends AppCompatActivity{
             case R.id.action_settings:
                 Toast.makeText(this, "Setting clicked", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.playlist:
-                Toast.makeText(this, "Playlist clicked", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(this, extraActivity.class);
+            case R.id.homeAsUp:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+            case R.id.queue_music:
+                Toast.makeText(this, "Queue Music clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, QueueMusic.class);
                 i.putParcelableArrayListExtra("list", songArrayList);
+                i.putExtra("shuffle", isShuffle);
                 i.putExtra("position", position);
                 startActivity(i);
                 break;
@@ -132,4 +153,5 @@ public class NowPlaying extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

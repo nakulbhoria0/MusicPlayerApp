@@ -26,13 +26,13 @@
             android:name=".NowPlaying"
             android:label="@string/title_activity_now_playing"
             android:parentActivityName=".MainActivity">
-
-            <!-- android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"> -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".extraActivity"></activity>
+        <activity
+            android:name=".QueueMusic"
+            android:label="Queue Music" />
     </application>
 
 </manifest>

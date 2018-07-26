@@ -33,6 +33,7 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="color" value="ffffff" />
                             <entry key="height" value="48" />
                             <entry key="outputName" value="playlist" />
                             <entry key="overrideSize" value="true" />
